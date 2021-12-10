@@ -1,0 +1,46 @@
+@mixin position_value($position, $top, $bottom, $left, $right) {
+  position: $position;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+  
+}
+
+@mixin position {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #4a6cac;
+  box-shadow: 0 2px 10px 0 #7e767680;
+  cursor: pointer;
+  &::before,
+  &::after {
+    content: "";
+    @include position_value(absolute, 50%, unset, 50%, unset);
+    margin-top: 1rem;
+    width: 2px;
+    height: 16px;
+    background-color: #455570;
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.esc__button1 {
+  @include position_value(absolute, 16px, unset, unset, 55rem);
+  @include position();
+}
+
+.esc__button2 {
+  @include position_value(absolute, 16px, unset, unset, 40rem);
+  @include position()
+}
+
+.esc__p {
+  margin-left: 1rem;
+}
